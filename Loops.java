@@ -47,7 +47,7 @@ public class Loops {
         }
     }
 
-    public int numbOccurrences(String str, String pattern) {
+    public int numOccurrences(String str, String pattern) {
         int occurrences = 0;
         int patternLength = pattern.length();
         while (true) {
@@ -81,8 +81,8 @@ public class Loops {
         System.out.println("6: max2PowerLess");
         System.out.print("| ");System.out.println(max2PowerLess(100));
         System.out.print("| ");System.out.println(max2PowerLess(65535));
-        System.out.println("7: numbOccurrences");
-        System.out.print("| ");System.out.println(numbOccurrences("HELLO HELLO!!!", "HELL"));
-        System.out.print("| ");System.out.println(numbOccurrences("hello everybody my name is markiplier and today we will be playing", "e"));
+        System.out.println("7: numOccurrences");
+        System.out.print("| ");System.out.println(numOccurrences("HELLO HELLO!!!", "HELL"));
+        System.out.print("| ");System.out.println(numOccurrences("hello everybody my name is markiplier and today we will be playing", "e"));
     }
 }
