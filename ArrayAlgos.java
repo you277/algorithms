@@ -77,4 +77,91 @@ public class ArrayAlgos {
         }
         return -1;
     }
+
+    public boolean containsEqValues(int[] nums) {
+        for (int num: nums) {
+            for (int otherNum: nums) {
+                if (num == otherNum) return true;
+            }
+        }
+        return false;
+    }
+
+    public int longestConsecutiveLength(int[] nums, int targetNum) {
+        int longest = 0;
+        for (int num: nums) {
+            if (num == targetNum) longest++;
+            else longest = 0;
+        }
+        return longest;
+    }
+
+    public String lastStr(String[] strs) {
+        String last = strs[0];
+        for (String str: strs) {
+            if (str.compareTo(last) > 0) {
+                last = str;
+            }
+        }
+        return last;
+    }
+
+    public ArrayAlgos() {
+        int[] nums = {1, 2, 3, 10, 23, 34252345, 656, 2147483, 23, 23, 23};
+        int[] nums2 = {6456,5,7,657,345,7,34,573,46,2,573463,456,34,56,34,57,4765,657};
+        System.out.println("1: max");
+        System.out.print("| ");System.out.println(max(nums));
+        System.out.print("| ");System.out.println(max(nums2));
+
+        System.out.println("2: min");
+        System.out.print("| ");System.out.println(min(nums));
+        System.out.print("| ");System.out.println(min(nums2));
+
+        String[] strs = {"hello", "everybody", "my", "name", "is", "markiplier"};
+        String[] strs2 = {"and", "today", "we", "will", "be", "playing", "this", "fabulous", "motion", "picture", "game"};
+        System.out.println("3: shortestString");
+        System.out.print("| ");System.out.println(shortestString(strs));
+        System.out.print("| ");System.out.println(shortestString(strs2));
+
+        System.out.println("4: longestString");
+        System.out.print("| ");System.out.println(longestString(strs));
+        System.out.print("| ");System.out.println(longestString(strs2));
+
+        int[] nums3 = {34,56,45,6345,7,658,6,7,87685};
+        int[] nums4 = {1, 20, 3, 40, 5, 60, 7, 80, 9, 0};
+        System.out.println("5: largestAbsoluteDiff");
+        System.out.print("| ");System.out.println(largestAbsoluteDiff(nums, nums2));
+        System.out.print("| ");System.out.println(largestAbsoluteDiff(nums3, nums4));
+
+        double[] doubles1 = {1.2, 1.3, 235.5, 12.5, 12.3, 32.8, 42.6};
+        double[] doubles2 = {6.1, 6.1, 6.1, 6.1, 6.1, 6.1, 6.1, 6.1, 6.1, 6.1};
+        System.out.println("6: mean");
+        System.out.print("| ");System.out.println(mean(doubles1));
+        System.out.print("| ");System.out.println(mean(doubles2));
+
+        System.out.println("7: reverseInts");
+        System.out.print("| ");System.out.println(reverseInts(nums));
+        System.out.print("| ");System.out.println(reverseInts(nums2));
+
+        System.out.println("8: containsConsecutiveEq");
+        System.out.print("| ");System.out.println(containsConsecutiveEq(nums));
+        System.out.print("| ");System.out.println(containsConsecutiveEq(nums2));
+
+        System.out.println("1: contains");
+        System.out.print("| ");System.out.println(contains("hello", "hell"));
+        System.out.print("| ");System.out.println(contains("dfgsdfherg", "yes"));
+
+        System.out.println("1: contains");
+        System.out.print("| ");System.out.println(contains("hello", "hell"));
+        System.out.print("| ");System.out.println(contains("dfgsdfherg", "yes"));
+
+        System.out.println("1: contains");
+        System.out.print("| ");System.out.println(contains("hello", "hell"));
+        System.out.print("| ");System.out.println(contains("dfgsdfherg", "yes"));
+
+        System.out.println("1: contains");
+        System.out.print("| ");System.out.println(contains("hello", "hell"));
+        System.out.print("| ");System.out.println(contains("dfgsdfherg", "yes"));
+
+    }
 }
