@@ -1,4 +1,13 @@
 public class ArrayAlgos {
+    public void printArray(int[] ints) {
+        System.out.print("[");
+        for (int i = 0; i < ints.length; i++) {
+            System.out.print(ints[i]);
+            if (i != ints.length - 1) System.out.print(", ");
+        }
+        System.out.println("]");
+    }
+
     public int max(int[] nums) {
         int maxNum = nums[0];
         for (int num: nums) {
@@ -53,9 +62,9 @@ public class ArrayAlgos {
     public int[] reverseInts(int[] nums) {
         int length = nums.length;
         int halfLength = length/2;
-        for (int i = 0; i< halfLength; i++) {
+        for (int i = 0; i < halfLength; i++) {
             int a = nums[i];
-            int otherIdx = length - i;
+            int otherIdx = length - i - 1;
             nums[i] = nums[otherIdx];
             nums[otherIdx] = a;
         }
@@ -127,8 +136,8 @@ public class ArrayAlgos {
         System.out.print("| ");System.out.println(longestString(strs));
         System.out.print("| ");System.out.println(longestString(strs2));
 
-        int[] nums3 = {34,56,45,6345,7,658,6,7,87685};
-        int[] nums4 = {1, 20, 3, 40, 5, 60, 7, 80, 9, 0};
+        int[] nums3 = {34,56,45,6345,7,7,7,658,6,7,87685};
+        int[] nums4 = {1, 20, 3, 40, 5, 60, 7, 80, 9, 0, 60, 60, 70, 70, 70, 70, 60, 60};
         System.out.println("5: largestAbsoluteDiff");
         System.out.print("| ");System.out.println(largestAbsoluteDiff(nums, nums2));
         System.out.print("| ");System.out.println(largestAbsoluteDiff(nums3, nums4));
@@ -140,28 +149,30 @@ public class ArrayAlgos {
         System.out.print("| ");System.out.println(mean(doubles2));
 
         System.out.println("7: reverseInts");
-        System.out.print("| ");System.out.println(reverseInts(nums));
-        System.out.print("| ");System.out.println(reverseInts(nums2));
+        System.out.print("| ");printArray(reverseInts(nums));
+        System.out.print("| ");printArray(reverseInts(nums2));
 
         System.out.println("8: containsConsecutiveEq");
         System.out.print("| ");System.out.println(containsConsecutiveEq(nums));
         System.out.print("| ");System.out.println(containsConsecutiveEq(nums2));
 
-        System.out.println("1: contains");
-        System.out.print("| ");System.out.println(contains("hello", "hell"));
-        System.out.print("| ");System.out.println(contains("dfgsdfherg", "yes"));
+        int[] nums5 = {5,6,34,6346,2346,-234324,5446546,7856,78};
+        int[] nums6 = {64,7,678,412,46,34,76,8,63,6,56, 67,834,7,568,-1};
+        System.out.println("9: firstNegIdx");
+        System.out.print("| ");System.out.println(firstNegIdx(nums5));
+        System.out.print("| ");System.out.println(firstNegIdx(nums6));
 
-        System.out.println("1: contains");
-        System.out.print("| ");System.out.println(contains("hello", "hell"));
-        System.out.print("| ");System.out.println(contains("dfgsdfherg", "yes"));
+        System.out.println("10: containsEqValues");
+        System.out.print("| ");System.out.println(containsEqValues(nums));
+        System.out.print("| ");System.out.println(containsEqValues(nums2));
 
-        System.out.println("1: contains");
-        System.out.print("| ");System.out.println(contains("hello", "hell"));
-        System.out.print("| ");System.out.println(contains("dfgsdfherg", "yes"));
+        System.out.println("11: longestConsecutiveLength");
+        System.out.print("| ");System.out.println(longestConsecutiveLength(nums, 0));
+        System.out.print("| ");System.out.println(longestConsecutiveLength(nums4, 70));
 
-        System.out.println("1: contains");
-        System.out.print("| ");System.out.println(contains("hello", "hell"));
-        System.out.print("| ");System.out.println(contains("dfgsdfherg", "yes"));
+        System.out.println("12: lastStr");
+        System.out.print("| ");System.out.println(lastStr(strs));
+        System.out.print("| ");System.out.println(lastStr(strs2));
 
     }
 }
