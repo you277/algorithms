@@ -1,11 +1,15 @@
 public class ArrayAlgos {
-    public void printArray(int[] ints) {
-        System.out.print("[");
-        for (int i = 0; i < ints.length; i++) {
-            System.out.print(ints[i]);
-            if (i != ints.length - 1) System.out.print(", ");
+    public void printIntArray(int[] ints) {
+        for (int i: ints) {
+            System.out.print(i + " ");
         }
-        System.out.println("]");
+    }
+
+    public int[] swapIndexes(int[] ints, int i, int v) {
+        int old = ints[i];
+        ints[i] = ints[v];
+        ints[v] = old;
+        return ints;
     }
 
     public int max(int[] nums) {
@@ -41,14 +45,11 @@ public class ArrayAlgos {
     }
 
     public int largestAbsoluteDiff(int[] nums1, int[] nums2) {
-        int n1 = min(nums1);
-        int n2 = max(nums1);
-        int n3 = min(nums2);
-        int n4 = max(nums2);
-        int diff1 = Math.abs(n4 - n1);
-        int diff2 = Math.abs(n2 - n3);
-        if (diff1 > diff2) return diff1;
-        return diff2;
+        int diff = 0;
+        for (int i = 0; i < nums1.length; i++) {
+            diff = Math.max(diff, Math.abs(nums1[i] - nums2[i]));
+        }
+        return diff;
     }
 
     public double mean(double[] nums) {
@@ -88,9 +89,9 @@ public class ArrayAlgos {
     }
 
     public boolean containsEqValues(int[] nums) {
-        for (int num: nums) {
-            for (int otherNum: nums) {
-                if (num == otherNum) return true;
+        for (int i = 0; i < nums.length; i++) {
+            for (int v = 0; v < nums.length; v++) {
+                if (i != v && nums[i] == nums[v]) return true;
             }
         }
         return false;
@@ -116,63 +117,74 @@ public class ArrayAlgos {
     }
 
     public ArrayAlgos() {
-        int[] nums = {1, 2, 3, 10, 23, 34252345, 656, 2147483, 23, 23, 23};
-        int[] nums2 = {6456,5,7,657,345,7,34,573,46,2,573463,456,34,56,34,57,4765,657};
-        System.out.println("1: max");
-        System.out.print("| ");System.out.println(max(nums));
-        System.out.print("| ");System.out.println(max(nums2));
+        System.out.println("1: printIntArray");
+        System.out.print("> [expected] 1 2 3 [result] ");printIntArray(new int[] {1, 2, 3});System.out.println();
+        System.out.print("> [expected] 500 1 2 [result] ");printIntArray(new int[] {500, 1, 2});System.out.println();
+        System.out.print("> [expected] [result] ");printIntArray(new int[] {});System.out.println();
 
-        System.out.println("2: min");
-        System.out.print("| ");System.out.println(min(nums));
-        System.out.print("| ");System.out.println(min(nums2));
+        System.out.println("2: swapIndexes");
+        System.out.print("> [expected] 1 2 3 4 -> 1 3 2 4 [result] ");printIntArray(swapIndexes(new int[] {1, 2, 3, 4}, 1, 2));System.out.println();
+        System.out.print("> [expected] 1 2 3 -> 3 2 1 [result] ");printIntArray(swapIndexes(new int[] {1, 2, 3}, 0, 2));System.out.println();
+        System.out.print("> [expected] 9 18 27 36 45 -> 9 36 27 18 45 [result] ");printIntArray(swapIndexes(new int[] {9, 18, 27, 36, 45}, 1, 3));System.out.println();
 
-        String[] strs = {"hello", "everybody", "my", "name", "is", "markiplier"};
-        String[] strs2 = {"and", "today", "we", "will", "be", "playing", "this", "fabulous", "motion", "picture", "game"};
-        System.out.println("3: shortestString");
-        System.out.print("| ");System.out.println(shortestString(strs));
-        System.out.print("| ");System.out.println(shortestString(strs2));
+        System.out.println("3: max");
+        System.out.print("> [expected] 3 [result] ");System.out.print(max(new int[] {3, 2, 1}));System.out.println();
+        System.out.print("> [expected] 3 [result] ");System.out.print(max(new int[] {1, 3, 2}));System.out.println();
+        System.out.print("> [expected] 34 [result] ");System.out.print(max(new int[] {6, 5, 34, 5, 6}));System.out.println();
 
-        System.out.println("4: longestString");
-        System.out.print("| ");System.out.println(longestString(strs));
-        System.out.print("| ");System.out.println(longestString(strs2));
+        System.out.println("4: min");
+        System.out.print("> [expected] 1 [result] ");System.out.print(min(new int[] {3, 2, 1}));System.out.println();
+        System.out.print("> [expected] 1 [result] ");System.out.print(min(new int[] {1, 3, 2}));System.out.println();
+        System.out.print("> [expected] 5 [result] ");System.out.print(min(new int[] {6, 5, 34, 5, 6}));System.out.println();
 
-        int[] nums3 = {34,56,45,6345,7,7,7,658,6,7,87685};
-        int[] nums4 = {1, 20, 3, 40, 5, 60, 7, 80, 9, 0, 60, 60, 70, 70, 70, 70, 60, 60};
-        System.out.println("5: largestAbsoluteDiff");
-        System.out.print("| ");System.out.println(largestAbsoluteDiff(nums, nums2));
-        System.out.print("| ");System.out.println(largestAbsoluteDiff(nums3, nums4));
+        System.out.println("5: shortestString");
+        System.out.print("> [expected] ! [result] ");System.out.print(shortestString(new String[] {"Hello,", "world", "!"}));System.out.println();
+        System.out.print("> [expected] aa [result] ");System.out.print(shortestString(new String[] {"aa", "bb", "cc"}));System.out.println();
+        System.out.print("> [expected] no [result] ");System.out.print(shortestString(new String[] {"yes", "no", "ewtgfdhwery"}));System.out.println();
 
-        double[] doubles1 = {1.2, 1.3, 235.5, 12.5, 12.3, 32.8, 42.6};
-        double[] doubles2 = {6.1, 6.1, 6.1, 6.1, 6.1, 6.1, 6.1, 6.1, 6.1, 6.1};
-        System.out.println("6: mean");
-        System.out.print("| ");System.out.println(mean(doubles1));
-        System.out.print("| ");System.out.println(mean(doubles2));
+        System.out.println("6: longestString");
+        System.out.print("> [expected] Hello, [result] ");System.out.print(longestString(new String[] {"Hello,", "world", "!"}));System.out.println();
+        System.out.print("> [expected] aa [result] ");System.out.print(longestString(new String[] {"aa", "bb", "cc"}));System.out.println();
+        System.out.print("> [expected] ewtgfdhwery [result] ");System.out.print(longestString(new String[] {"yes", "no", "ewtgfdhwery"}));System.out.println();
 
-        System.out.println("7: reverseInts");
-        System.out.print("| ");printArray(reverseInts(nums));
-        System.out.print("| ");printArray(reverseInts(nums2));
+        System.out.println("7: largestAbsoluteDiff");
+        System.out.print("> [expected] 7 [result] ");System.out.print(largestAbsoluteDiff(new int[] {2, 3, 4}, new int[] {-1, -2, -3}));System.out.println();
+        System.out.print("> [expected] 3 [result] ");System.out.print(largestAbsoluteDiff(new int[] {1, 1, 1}, new int[] {1, -2, 3}));System.out.println();
+        System.out.print("> [expected] 700 [result] ");System.out.print(largestAbsoluteDiff(new int[] {100, -100, 200}, new int[] {300, 600, -200}));System.out.println();
 
-        System.out.println("8: containsConsecutiveEq");
-        System.out.print("| ");System.out.println(containsConsecutiveEq(nums));
-        System.out.print("| ");System.out.println(containsConsecutiveEq(nums2));
+        System.out.println("8: mean");
+        System.out.print("> [expected] 3.5 [expected] ");System.out.print(mean(new double[] {2.0, 3.0, 4.0, 5.0}));System.out.println();
+        System.out.print("> [expected] 1.0 [expected] ");System.out.print(mean(new double[] {1, 1, 1}));System.out.println();
+        System.out.print("> [expected] 2.0 [expected] ");System.out.print(mean(new double[] {1, 2, 3}));System.out.println();
 
-        int[] nums5 = {5,6,34,6346,2346,-234324,5446546,7856,78};
-        int[] nums6 = {64,7,678,412,46,34,76,8,63,6,56, 67,834,7,568,-1};
-        System.out.println("9: firstNegIdx");
-        System.out.print("| ");System.out.println(firstNegIdx(nums5));
-        System.out.print("| ");System.out.println(firstNegIdx(nums6));
+        System.out.println("9: reverseInts");
+        System.out.print("> [expected] 1 2 3 -> 3 2 1 [result] ");printIntArray(reverseInts(new int[] {1, 2, 3}));System.out.println();
+        System.out.print("> [expected] 5 -> 5 [result] ");printIntArray(reverseInts(new int[] {5}));System.out.println();
+        System.out.print("> [expected] 100 500 234 534 -> 534 234 500 100 [result] ");printIntArray(reverseInts(new int[] {100, 500, 234, 534}));System.out.println();
 
-        System.out.println("10: containsEqValues");
-        System.out.print("| ");System.out.println(containsEqValues(nums));
-        System.out.print("| ");System.out.println(containsEqValues(nums2));
+        System.out.println("10: containsConsecutiveEq");
+        System.out.print("> [expected] true [result] ");System.out.print(containsConsecutiveEq(new int[] {1, 2, 3, 3, 4}));System.out.println();
+        System.out.print("> [expected] true [result] ");System.out.print(containsConsecutiveEq(new int[] {1, 1, 2, 2, 3, 3}));System.out.println();
+        System.out.print("> [expected] false [result] ");System.out.print(containsConsecutiveEq(new int[] {1, 2, 3, 4, 5}));System.out.println();
 
-        System.out.println("11: longestConsecutiveLength");
-        System.out.print("| ");System.out.println(longestConsecutiveLength(nums, 0));
-        System.out.print("| ");System.out.println(longestConsecutiveLength(nums4, 70));
+        System.out.println("11: firstNegIdx");
+        System.out.print("> [expected] 2 [result] ");System.out.print(firstNegIdx(new int[] {1, 0, -1}));System.out.println();
+        System.out.print("> [expected] 0 [result] ");System.out.print(firstNegIdx(new int[] {-1, 0, -1}));System.out.println();
+        System.out.print("> [expected] 6 [result] ");System.out.print(firstNegIdx(new int[] {0, 0, 0, 0, 0, 0, -1, 0, 0, 0}));System.out.println();
 
-        System.out.println("12: lastStr");
-        System.out.print("| ");System.out.println(lastStr(strs));
-        System.out.print("| ");System.out.println(lastStr(strs2));
+        System.out.println("12: containsEqValues");
+        System.out.print("> [expected] true [result] ");System.out.print(containsEqValues(new int[] {1, 2, 3, 2}));System.out.println();
+        System.out.print("> [expected] true [result] ");System.out.print(containsEqValues(new int[] {-1, 0, -1}));System.out.println();
+        System.out.print("> [expected] false [result] ");System.out.print(containsEqValues(new int[] {1, 2, 3, 4, 5}));System.out.println();
 
+        System.out.println("13: longestConsecutiveLength");
+        System.out.print("> [expected] 3 [result] ");System.out.print(longestConsecutiveLength(new int[] {1, 2, 1, 1, 1}, 1));System.out.println();
+        System.out.print("> [expected] 1 [result] ");System.out.print(longestConsecutiveLength(new int[] {-1, 0, 1}, 1));System.out.println();
+        System.out.print("> [expected] 0 [result] ");System.out.print(longestConsecutiveLength(new int[] {1, 2, 3, 1, 5}, 0));System.out.println();
+
+        System.out.println("14: lastStr");
+        System.out.print("> [expected] zebra [result] ");System.out.print(lastStr(new String[] {"zebra", "alpha"}));System.out.println();
+        System.out.print("> [expected] hi [result] ");System.out.print(lastStr(new String[] {"hi", "guys"}));System.out.println();
+        System.out.print("> [expected] us [result] ");System.out.print(lastStr(new String[] {"free", "among", "us"}));System.out.println();
     }
 }
