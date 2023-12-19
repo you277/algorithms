@@ -52,6 +52,14 @@ public class ArrayAlgos {
         return diff;
     }
 
+    public int correspondingLargestAbsoluteDiff(int[] nums1, int[] nums2) {
+        int diff = 0;
+        for (int i = 0; i < nums1.length; i++) {
+            diff = Math.max(diff, Math.abs(nums1[i] - nums2[i]));
+        }
+        return diff;
+    }
+
     public double mean(double[] nums) {
         double sum = 0;
         for (double num: nums) {
@@ -147,10 +155,10 @@ public class ArrayAlgos {
         System.out.print("> [expected] aa [result] ");System.out.print(longestString(new String[] {"aa", "bb", "cc"}));System.out.println();
         System.out.print("> [expected] ewtgfdhwery [result] ");System.out.print(longestString(new String[] {"yes", "no", "ewtgfdhwery"}));System.out.println();
 
-        System.out.println("7: largestAbsoluteDiff");
-        System.out.print("> [expected] 7 [result] ");System.out.print(largestAbsoluteDiff(new int[] {2, 3, 4}, new int[] {-1, -2, -3}));System.out.println();
-        System.out.print("> [expected] 3 [result] ");System.out.print(largestAbsoluteDiff(new int[] {1, 1, 1}, new int[] {1, -2, 3}));System.out.println();
-        System.out.print("> [expected] 700 [result] ");System.out.print(largestAbsoluteDiff(new int[] {100, -100, 200}, new int[] {300, 600, -200}));System.out.println();
+        System.out.println("7: correspondingLargestAbsoluteDiff");
+        System.out.print("> [expected] 7 [result] ");System.out.print(correspondingLargestAbsoluteDiff(new int[] {2, 3, 4}, new int[] {-1, -2, -3}));System.out.println();
+        System.out.print("> [expected] 3 [result] ");System.out.print(correspondingLargestAbsoluteDiff(new int[] {1, 1, 1}, new int[] {1, -2, 3}));System.out.println();
+        System.out.print("> [expected] 900 [result] ");System.out.print(correspondingLargestAbsoluteDiff(new int[] {100, 1000, 200}, new int[] {300, 600, -700}));System.out.println();
 
         System.out.println("8: mean");
         System.out.print("> [expected] 3.5 [expected] ");System.out.print(mean(new double[] {2.0, 3.0, 4.0, 5.0}));System.out.println();
