@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
 //        new Loops();
 //        new StringAlgos();
-        new ArrayAlgos();
+//        new ArrayAlgos();
+        new ArrayListAlgos();
     }
 }
