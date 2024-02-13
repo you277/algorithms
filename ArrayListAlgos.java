@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 public class ArrayListAlgos {
     public ArrayList<Integer> removeDupes(ArrayList<Integer> nums) {
-        ArrayList<Integer> existing = new ArrayList();
+        ArrayList<Integer> existing = new ArrayList<>();
         for (int i = 0; i < nums.size(); i++) {
             int n = nums.get(i);
-            if (existing.indexOf(n) != -1) {
+            if (existing.contains(n)) {
                 nums.remove(i);
                 i--;
             } else {
@@ -24,8 +24,10 @@ public class ArrayListAlgos {
         return nums;
     }
 
-    public ArrayList<Integer> add(ArrayList<Integer> nums, int num) {
-        nums.add(num);
+    public ArrayList<Integer> orderedAdd(ArrayList<Integer> nums, int num) {
+        int i = 0;
+        while (i < nums.size() && nums.get(i) < num) i++;
+        nums.add(i, num);
         return nums;
     }
 
@@ -84,7 +86,7 @@ public class ArrayListAlgos {
     }
 
     public double getMean(ArrayList<Double> nums) {
-        int total = 0;
+        double total = 0;
         for (double n: nums) total += n;
         return total/nums.size();
     }
@@ -120,20 +122,285 @@ public class ArrayListAlgos {
         return false;
     }
 
+    public ArrayList<Integer> createArrayList(int[] nums) {
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int n: nums) list.add(n);
+        return list;
+    }
+
+    public ArrayList<Double> createArrayList(double[] nums) {
+        ArrayList<Double> list = new ArrayList<>();
+        for (double n: nums) list.add(n);
+        return list;
+    }
+
+    public ArrayList<String> createArrayList(String[] strs) {
+        ArrayList<String> list = new ArrayList<>();
+        for (String s: strs) list.add(s);
+        return list;
+    }
 
     public ArrayListAlgos() {
-        ArrayList<Integer> arr1 = new ArrayList();
-        arr1.add(1);arr1.add(2);arr1.add(2);arr1.add(3);arr1.add(3);
+        System.out.println("1: removeDupes: ");
 
-        ArrayList<Integer> arr2 = new ArrayList();
-        arr1.add(1);arr1.add(2);arr1.add(3);arr1.add(4);arr1.add(5);arr1.add(1);arr1.add(2);arr1.add(3);arr1.add(4);arr1.add(5);
+        System.out.print("input: [1, 2, 2, 3, 3]; expected: [1, 2, 3]; result: ");
+        System.out.println(
+                removeDupes(createArrayList(new int[] {1, 2, 2, 3, 3}))
+        );
 
-        ArrayList<Integer> arr3 = new ArrayList();
-        arr1.add(7);arr1.add(7);arr1.add(7);
+        System.out.print("input: [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]; expected: [1, 2, 3, 4, 5]; result: ");
+        System.out.println(
+                removeDupes(createArrayList(new int[] {1, 2, 3, 4, 5, 1, 2, 3, 4, 5}))
+        );
 
-        System.out.println("removeDupes: ");
-        System.out.print("input: [1, 2, 2, 3, 3]; expected: [1, 2, 3]; result: ");System.out.println(removeDupes(arr1));
-        System.out.print("input: [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]; expected: [1, 2, 3, 4, 5]; result: ");System.out.println(removeDupes(arr2));
-        System.out.print("input: [7, 7, 7]; expected: []; result: ");System.out.println(removeDupes(arr3));
+        System.out.print("input: [7, 7, 7]; expected: [7]; result: ");
+        System.out.println(
+                removeDupes(createArrayList(new int[] {7, 7, 7}))
+        );
+
+
+        System.out.println("2: remoteInt: ");
+
+        System.out.print("input: [1, 2, 2, 3, 3], 2; expected: [1, 3, 3]; result: ");
+        System.out.println(
+                removeInt(createArrayList(new int[] {1, 2, 2, 3, 3}), 2)
+        );
+
+        System.out.print("input: [1, 2, 2, 3, 3], 3; expected: [1, 2, 2]; result: ");
+        System.out.println(
+                removeInt(createArrayList(new int[] {1, 2, 2, 3, 3}), 3)
+        );
+
+        System.out.print("input: [1, 2, 2, 3, 3], 1; expected: [1]; result: ");
+        System.out.println(
+                removeInt(createArrayList(new int[] {1, 2, 2, 3, 3}), 1)
+        );
+
+
+
+        System.out.println("3: orderedAdd: ");
+
+        System.out.print("input: [1, 2, 2, 3, 3], 4; expected: [1, 2, 2, 3, 3, 4]; result: ");
+        System.out.println(
+                orderedAdd(createArrayList(new int[] {1, 2, 2, 3, 3}), 4)
+        );
+
+        System.out.print("input: [1, 2, 2, 3, 3], 2; expected: [1, 2, 2, 2, 3, 3]; result: ");
+        System.out.println(
+                orderedAdd(createArrayList(new int[] {1, 2, 2, 3, 3}), 2)
+        );
+
+        System.out.print("input: [1, 2, 2, 3, 3], 1; expected: [1, 1, 2, 2, 3, 3]; result: ");
+        System.out.println(orderedAdd(
+                createArrayList(new int[] {1, 2, 2, 3, 3}), 1)
+        );
+
+
+
+        System.out.println("4: arraysAreReverse: ");
+
+        System.out.print("input: [1, 2, 3], [3, 2, 1]; expected: true; result: ");
+        System.out.println(
+                arraysAreReverse(createArrayList(new int[] {1, 2, 3}), createArrayList(new int[] {3, 2, 1}))
+        );
+
+        System.out.print("input: [1, 2, 3], [1, 2, 3]; expected: false; result: ");
+        System.out.println(
+                arraysAreReverse(createArrayList(new int[] {1, 2, 3}), createArrayList(new int[] {1, 2, 3}))
+        );
+
+        System.out.print("input: [1, 2, 3], [3, 2, 1, 1]; expected: false; result: ");
+        System.out.println(
+                arraysAreReverse(createArrayList(new int[] {1, 2, 3}), createArrayList(new int[] {3, 2, 1, 1}))
+        );
+
+
+
+        System.out.println("5: max: ");
+
+        System.out.print("input: [1, 2, 3]; expected: 3; result: ");
+        System.out.println(
+                max(createArrayList(new int[] {1, 2, 3}))
+        );
+
+        System.out.print("input: [3, 2, 1]; expected: 3; result: ");
+        System.out.println(
+                max(createArrayList(new int[] {3, 2, 1}))
+        );
+
+        System.out.print("input: [123125435, 5234, 523, 45, 2345]; expected: 123125435; result: ");
+        System.out.println(
+                max(createArrayList(new int[] {123125435, 5234, 523, 45, 2345}))
+        );
+
+
+
+        System.out.println("6: min: ");
+
+        System.out.print("input: [1, 2, 3]; expected: 1; result: ");
+        System.out.println(
+                min(createArrayList(new int[] {1, 2, 3}))
+        );
+
+        System.out.print("input: [3, 2, 1]; expected: 1; result: ");
+        System.out.println(
+                min(createArrayList(new int[] {3, 2, 1}))
+        );
+
+        System.out.print("input: [123125435, 5234, 523, 45, 2345]; expected: 45; result: ");
+        System.out.println(
+                min(createArrayList(new int[] {123125435, 5234, 523, 45, 2345}))
+        );
+
+
+
+        System.out.println("7: shortestString: ");
+
+        System.out.print("input: [\"Hello\", \"World\", \"!\"]; expected: \"!\"; result: ");
+        System.out.println(
+                shortestString(createArrayList(new String[] {"Hello", "World", "!"}))
+        );
+
+        System.out.print("input: [\"Hello\", \"bro ...\"]; expected: \"Hello\"; result: ");
+        System.out.println(
+                shortestString(createArrayList(new String[] {"Hello", "bro ..."}))
+        );
+
+        System.out.print("input: [\"free\", \"r\"]; expected: \"r\"; result: ");
+        System.out.println(
+                shortestString(createArrayList(new String[] {"free", "r"}))
+        );
+
+
+
+        System.out.println("8: longestString: ");
+
+        System.out.print("input: [\"Hello\", \"World\", \"!\"]; expected: \"Hello\"; result: ");
+        System.out.println(
+                longestString(createArrayList(new String[] {"Hello", "World", "!"}))
+        );
+
+        System.out.print("input: [\"Hello\", \"bro ...\"]; expected: \"bro ...\"; result: ");
+        System.out.println(
+                longestString(createArrayList(new String[] {"Hello", "bro ..."}))
+        );
+
+        System.out.print("input: [\"free\", \"r\"]; expected: \"free\"; result: ");
+        System.out.println(
+                longestString(createArrayList(new String[] {"free", "r"}))
+        );
+
+
+
+        System.out.println("9: largestAbsoluteDiff: ");
+
+        System.out.print("input: [2, 3, 4], [-1, -2, -3]; expected: 7; result: ");
+        System.out.println(
+                largestAbsoluteDiff(createArrayList(new int[] {2, 3, 4}), createArrayList(new int[] {-1, -2, -3}))
+        );
+
+        System.out.print("input: [2, 3, 4], [1, 2, 3]; expected: 1; result: ");
+        System.out.println(
+                largestAbsoluteDiff(createArrayList(new int[] {2, 3, 4}), createArrayList(new int[] {1, 2, 3}))
+        );
+
+        System.out.print("input: [2, 3, 4], [0, 0, 0]; expected: 3; result: ");
+        System.out.println(
+                largestAbsoluteDiff(createArrayList(new int[] {2, 3, 4}), createArrayList(new int[] {0, 0, 0}))
+        );
+
+
+
+        System.out.println("10: getMean: ");
+
+        System.out.print("input: [1.5, 3.5, 5.5]; expected: 3.5; result: ");
+        System.out.println(
+                getMean(createArrayList(new double[] {1.5, 3.5, 5.5}))
+        );
+
+        System.out.print("input: [2.5, 4.5, 6.5]; expected: 4.5; result: ");
+        System.out.println(
+                getMean(createArrayList(new double[] {2.5, 4.5, 6.5}))
+        );
+
+        System.out.print("input: [1, 2, 3, 5, 6, 7, 9, 10, 11]; expected: 6.0; result: ");
+        System.out.println(
+                getMean(createArrayList(new double[] {1, 2, 3, 5, 6, 7, 9, 10, 11}))
+        );
+
+
+
+        System.out.println("11: reverse: ");
+
+        System.out.print("input: [1, 2, 3]; expected: [3, 2, 1]; result: ");
+        System.out.println(
+                reverse(createArrayList(new int[] {1, 2, 3}))
+        );
+
+        System.out.print("input: [3, 2, 1]; expected: [1, 2, 3]; result: ");
+        System.out.println(
+                reverse(createArrayList(new int[] {3, 2, 1}))
+        );
+
+        System.out.print("input: [500; expected: [500]; result: ");
+        System.out.println(
+                reverse(createArrayList(new int[] {500}))
+        );
+
+
+        System.out.println("12: containsConsecutiveEqValues: ");
+
+        System.out.print("input: [1, 2, 3, 3, 4]; expected: true; result: ");
+        System.out.println(
+                containsConsecutiveEqValues(createArrayList(new int[] {1, 2, 3, 3, 4}))
+        );
+
+        System.out.print("input: [1, 2, 3]; expected: false; result: ");
+        System.out.println(
+                containsConsecutiveEqValues(createArrayList(new int[] {1, 2, 3}))
+        );
+
+        System.out.print("input: [1, 1]; expected: true; result: ");
+        System.out.println(
+                containsConsecutiveEqValues(createArrayList(new int[] {1, 1}))
+        );
+
+
+
+        System.out.println("13: firstNegIdx: ");
+
+        System.out.print("input: [1, 0, -1]; expected: 2; result: ");
+        System.out.println(
+                firstNegIdx(createArrayList(new int[] {1, 0, -1}))
+        );
+
+        System.out.print("input: [0, -1, 1]; expected: 1; result: ");
+        System.out.println(
+                firstNegIdx(createArrayList(new int[] {0, -1, 1}))
+        );
+
+        System.out.print("input: []; expected: -1; result: ");
+        System.out.println(
+                firstNegIdx(createArrayList(new int[] {}))
+        );
+
+
+
+        System.out.println("14: containsEqValues: ");
+
+        System.out.print("input: [1, 2, 3, 2]; expected: true; result: ");
+        System.out.println(
+                containsEqValues(createArrayList(new int[] {1, 2, 3, 2}))
+        );
+
+        System.out.print("input: [1, 2, 3]; expected: false; result: ");
+        System.out.println(
+                containsEqValues(createArrayList(new int[] {1, 2, 3}))
+        );
+
+        System.out.print("input: []; expected: false; result: ");
+        System.out.println(
+                containsEqValues(createArrayList(new int[] {}))
+        );
     }
 }
