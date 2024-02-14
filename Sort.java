@@ -61,7 +61,7 @@ public class Sort {
                 strs.set(v - 1, s1);
                 strs.set(v, s2);
                 v--;
-                if (s1.toLowerCase().compareTo(s2.toLowerCase()) < 0) break;
+                if (s2.toLowerCase().compareTo(s1.toLowerCase()) < 0) break;
             }
         }
         return strs;
@@ -94,7 +94,7 @@ public class Sort {
                 nums[v - 1] = n1;
                 nums[v] = n2;
                 v--;
-                if (n1 < n2) break;
+                if (n2 < n1) break;
             }
         }
         return nums;
@@ -103,25 +103,68 @@ public class Sort {
     public Sort() {
         for (String s: stringSelectionSort(new String[] {"Zebra", "alpha"})) System.out.print(s + " ");
         System.out.println();
+        for (String s: stringSelectionSort(new String[] {"among", "us", "sus"})) System.out.print(s + " ");
+        System.out.println();
+        for (String s: stringSelectionSort(new String[] {"A", "c", "D", "e", "f", "C", "B", "b"})) System.out.print(s + " ");
+        System.out.println();
+        System.out.println();
+
         for (String s: stringInsertionSort(new String[] {"Zebra", "alpha"})) System.out.print(s + " ");
+        System.out.println();
+        for (String s: stringInsertionSort(new String[] {"among", "us", "SUS"})) System.out.print(s + " ");
+        System.out.println();
+        for (String s: stringInsertionSort(new String[] {"A", "c", "D", "e", "f", "C", "B", "b"})) System.out.print(s + " ");
+        System.out.println();
         System.out.println();
 
         ArrayList<String> strs1 = new ArrayList();
         strs1.add("Zebra");strs1.add("alpha");
 
+        ArrayList<String> strs12 = new ArrayList();
+        strs12.add("among");strs12.add("us");strs12.add("sus");
+
+        ArrayList<String> strs13 = new ArrayList();
+        strs13.add("A");strs13.add("c");strs13.add("D");strs13.add("e");strs13.add("f");strs13.add("C");strs13.add("B");strs13.add("b");
+
         for (String s: stringSelectionSort(strs1)) System.out.print(s + " ");
+        System.out.println();
+        for (String s: stringSelectionSort(strs12)) System.out.print(s + " ");
+        System.out.println();
+        for (String s: stringSelectionSort(strs13)) System.out.print(s + " ");
+        System.out.println();
         System.out.println();
 
         ArrayList<String> strs2 = new ArrayList();
         strs2.add("Zebra");strs2.add("alpha");
 
+        ArrayList<String> strs22 = new ArrayList();
+        strs22.add("among");strs22.add("us");strs22.add("sus");
+
+        ArrayList<String> strs23 = new ArrayList();
+        strs23.add("A");strs23.add("c");strs23.add("D");strs23.add("e");strs23.add("f");strs23.add("C");strs23.add("B");strs23.add("b");
+
         for (String s: stringInsertionSort(strs2)) System.out.print(s + " ");
+        System.out.println();
+        for (String s: stringInsertionSort(strs22)) System.out.print(s + " ");
+        System.out.println();
+        for (String s: stringInsertionSort(strs23)) System.out.print(s + " ");
+        System.out.println();
         System.out.println();
 
         for (int n: intSelectionSort(new int[] {1, 0, -1})) System.out.print(n + " ");
         System.out.println();
+        for (int n: intSelectionSort(new int[] {9, 2, 45, 4, 5})) System.out.print(n + " ");
+        System.out.println();
+        for (int n: intSelectionSort(new int[] {2147483647, 256, 65535})) System.out.print(n + " ");
+        System.out.println();
+        System.out.println();
 
         for (int n: intInsertionSort(new int[] {1, 0, -1})) System.out.print(n + " ");
+        System.out.println();
+        for (int n: intInsertionSort(new int[] {9, 2, 45, 4, 5})) System.out.print(n + " ");
+        System.out.println();
+        for (int n: intInsertionSort(new int[] {2147483647, 256, 65535})) System.out.print(n + " ");
+        System.out.println();
         System.out.println();
     }
 }
