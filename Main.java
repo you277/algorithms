@@ -5,6 +5,7 @@ public class Main {
 //        new Loops();
 //        new StringAlgos();
 //        new ArrayAlgos();
-        new ArrayListAlgos();
+//        new ArrayListAlgos();
+        new Sort();
     }
 }
