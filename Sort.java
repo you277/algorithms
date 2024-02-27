@@ -38,33 +38,29 @@ public class Sort {
     }
 
     public static String[] stringInsertionSort(String[] strs) {
-        for (int i = 0; i < strs.length; i++) {
+        for(int i = 1; i < strs.length; i++) {
+            String hi = strs[i];
             int v = i;
-            while (v > 0) {
-                String s1 = strs[v];
-                String s2 = strs[v - 1];
-                strs[v - 1] = s1;
-                strs[v] = s2;
+            while(v > 0 && hi.toLowerCase().compareTo(strs[v - 1].toLowerCase()) < 0) {
+                strs[v] = strs[v - 1];
+                strs[v - 1] = hi;
                 v--;
-                if (s1.toLowerCase().compareTo(s2.toLowerCase()) < 0) break;
             }
         }
-        return strs;
+        return  strs;
     }
 
     public static ArrayList<String> stringInsertionSort(ArrayList<String> strs) {
-        for (int i = 0; i < strs.size(); i++) {
+        for(int i = 1; i < strs.size(); i++) {
+            String hi = strs.get(i);
             int v = i;
-            while (v > 0) {
-                String s1 = strs.get(v);
-                String s2 = strs.get(v - 1);
-                strs.set(v - 1, s1);
-                strs.set(v, s2);
+            while(v > 0 && hi.toLowerCase().compareTo(strs.get(v - 1).toLowerCase()) < 0) {
+                strs.set(v, strs.get(v - 1));
+                strs.set(v - 1, hi);
                 v--;
-                if (s2.toLowerCase().compareTo(s1.toLowerCase()) < 0) break;
             }
         }
-        return strs;
+        return  strs;
     }
 
     public static int[] intSelectionSort(int[] nums) {
@@ -85,34 +81,40 @@ public class Sort {
         return nums;
     }
 
-    public static int[] intInsertionSort(int[] nums) {
-        for (int i = 0; i < nums.length; i++) {
+    public static int[] intInsertionSort(int[] strs) {
+        for(int i = 1; i < strs.length; i++) {
+            int hi = strs[i];
             int v = i;
-            while (v > 0) {
-                int n1 = nums[v];
-                int n2 = nums[v - 1];
-                nums[v - 1] = n1;
-                nums[v] = n2;
+            while(v > 0 && hi < strs[v - 1]) {
+                strs[v] = strs[v - 1];
+                strs[v - 1] = hi;
                 v--;
-                if (n2 < n1) break;
             }
         }
-        return nums;
+        return  strs;
     }
 
     public Sort() {
-        for (String s: stringSelectionSort(new String[] {"Zebra", "alpha"})) System.out.print(s + " ");
+        System.out.println("1: stringSelectionSort");
+        System.out.print("| zebra alpha -> alpha zebra | result: ");
+        for (String s: stringSelectionSort(new String[] {"zebra", "alpha"})) System.out.print(s + " ");
         System.out.println();
+        System.out.print("| among us sus -> among sus us | result: ");
         for (String s: stringSelectionSort(new String[] {"among", "us", "sus"})) System.out.print(s + " ");
         System.out.println();
+        System.out.print("| A c D e f C B b -> A B b C c D e f | result: ");
         for (String s: stringSelectionSort(new String[] {"A", "c", "D", "e", "f", "C", "B", "b"})) System.out.print(s + " ");
         System.out.println();
         System.out.println();
 
-        for (String s: stringInsertionSort(new String[] {"Zebra", "alpha"})) System.out.print(s + " ");
+        System.out.println("2: stringInsertionSort");
+        System.out.print("| zebra alpha -> alpha zebra | result: ");
+        for (String s: stringInsertionSort(new String[] {"zebra", "alpha"})) System.out.print(s + " ");
         System.out.println();
+        System.out.print("| among us sus -> among sus us | result: ");
         for (String s: stringInsertionSort(new String[] {"among", "us", "SUS"})) System.out.print(s + " ");
         System.out.println();
+        System.out.print("| A c D e f C B b -> A B b C c D e f | result: ");
         for (String s: stringInsertionSort(new String[] {"A", "c", "D", "e", "f", "C", "B", "b"})) System.out.print(s + " ");
         System.out.println();
         System.out.println();
@@ -126,10 +128,14 @@ public class Sort {
         ArrayList<String> strs13 = new ArrayList();
         strs13.add("A");strs13.add("c");strs13.add("D");strs13.add("e");strs13.add("f");strs13.add("C");strs13.add("B");strs13.add("b");
 
+        System.out.println("3: stringSelectionSort (ArrayList)");
+        System.out.print("| zebra alpha -> alpha zebra | result: ");
         for (String s: stringSelectionSort(strs1)) System.out.print(s + " ");
         System.out.println();
+        System.out.print("| among us sus -> among sus us | result: ");
         for (String s: stringSelectionSort(strs12)) System.out.print(s + " ");
         System.out.println();
+        System.out.print("| A c D e f C B b -> A B b C c D e f | result: ");
         for (String s: stringSelectionSort(strs13)) System.out.print(s + " ");
         System.out.println();
         System.out.println();
@@ -143,26 +149,38 @@ public class Sort {
         ArrayList<String> strs23 = new ArrayList();
         strs23.add("A");strs23.add("c");strs23.add("D");strs23.add("e");strs23.add("f");strs23.add("C");strs23.add("B");strs23.add("b");
 
+        System.out.println("4: stringInsertionSort (ArrayList)");
+        System.out.print("| zebra alpha -> alpha zebra | result: ");
         for (String s: stringInsertionSort(strs2)) System.out.print(s + " ");
         System.out.println();
+        System.out.print("| among us sus -> among sus us | result: ");
         for (String s: stringInsertionSort(strs22)) System.out.print(s + " ");
         System.out.println();
+        System.out.print("| A c D e f C B b -> A B b C c D e f | result: ");
         for (String s: stringInsertionSort(strs23)) System.out.print(s + " ");
         System.out.println();
         System.out.println();
 
+        System.out.println("5: intSelectionSort");
+        System.out.print("| 1, 0, -1 -> -1, 0, 1 | result: ");
         for (int n: intSelectionSort(new int[] {1, 0, -1})) System.out.print(n + " ");
         System.out.println();
+        System.out.print("| 9, 2, 45, 4, 5 -> 2, 4, 5, 9, 45 | result: ");
         for (int n: intSelectionSort(new int[] {9, 2, 45, 4, 5})) System.out.print(n + " ");
         System.out.println();
+        System.out.print("| 2147483647, 256, 65535 -> 256, 65535, 2147483647 | result: ");
         for (int n: intSelectionSort(new int[] {2147483647, 256, 65535})) System.out.print(n + " ");
         System.out.println();
         System.out.println();
 
+        System.out.println("6: intInsertionSort");
+        System.out.print("| 1, 0, -1 -> -1, 0, 1 | result: ");
         for (int n: intInsertionSort(new int[] {1, 0, -1})) System.out.print(n + " ");
         System.out.println();
+        System.out.print("| 9, 2, 45, 4, 5 -> 2, 4, 5, 9, 45 | result: ");
         for (int n: intInsertionSort(new int[] {9, 2, 45, 4, 5})) System.out.print(n + " ");
         System.out.println();
+        System.out.print("| 2147483647, 256, 65535 -> 256, 65535, 2147483647 | result: ");
         for (int n: intInsertionSort(new int[] {2147483647, 256, 65535})) System.out.print(n + " ");
         System.out.println();
         System.out.println();

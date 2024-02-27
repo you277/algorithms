@@ -6,7 +6,7 @@ public class Main {
 //        new StringAlgos();
 //        new ArrayAlgos();
 //        new ArrayListAlgos();
-//        new Sort();
-        new SearchAlgos();
+        new Sort();
+//        new SearchAlgos();
     }
 }
