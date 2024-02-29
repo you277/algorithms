@@ -119,17 +119,10 @@ public class TwoDArrayAlgos {
         return "hi";
     }
 
-    public void p(String s) {System.out.print(s);}
-    public void p(int s) {System.out.print(s);}
-    public void p(boolean s) {System.out.print(s);}
-    public void p(int[] s) {
-        System.out.print("[" + s[0]);
-        for (int i = 1; i < s.length; i++)
-            System.out.print(", " + s[i]);
-        System.out.print("]");
-    }
+    public void pln() {System.out.println();}
     public void pln(String s) {System.out.println(s);}
     public void pln(int s) {System.out.println(s);}
+    public void pln(double s) {System.out.println(s);}
     public void pln(boolean s) {System.out.println(s);}
     public void pln(int[] s) {
         System.out.print("[" + s[0]);
@@ -148,28 +141,81 @@ public class TwoDArrayAlgos {
         int[][] intArr2 = {{1, 2}, {3, 4}};
 
         pln("1: numAppearances");
-        p("| [[Hello, world, !], [It's, me, Genevieve]], e -> 3 | result: ");pln(numAppearances(stringArr4, "e"));
-        p("| [[hi, among], [guys, us], [here, wth]], e -> 1 | result: ");pln(numAppearances(stringArr2, "a"));
-        p("| [[fghetfh, sdfgsdf], [yes, yes], [no, yes]], e -> 1 | result: ");pln(numAppearances(stringArr3, "d"));
+        pln(numAppearances(stringArr4, "e"));
+        pln(numAppearances(stringArr2, "a"));
+        pln(numAppearances(stringArr3, "d"));
+        pln();
 
         pln("2: contains");
-        p("| [[1, 2], [3, 4]], 5 -> false | result: ");pln(contains(intArr2, 5));
-        p("| [[3, 2, 1], [4, 5, 6]], 3 -> true | result: ");pln(contains(intArr, 3));
-        p("| [[2], [1]], 20 -> false | result: ");pln(contains(new int[][] {{2}, {1}}, 20));
+        pln(contains(intArr2, 5));
+        pln(contains(intArr, 3));
+        pln(contains(new int[][] {{2}, {1}}, 20));
+        pln();
 
         pln("3: getFirstAppearance");
-        p("| [[1, 2], [3, 4]], 5 -> [-1, -1] | result: ");pln(getFirstAppearance(intArr2, 5));
-        p("| [[3, 2, 1], [4, 5, 6]], 3 -> [0, 0] | result: ");pln(getFirstAppearance(intArr, 3));
-        p("| [[2, 4, 5, 9], [1, 6, 7, 8]], 7 -> [1, 2] | result: ");pln(getFirstAppearance(new int[][] {{2, 4, 5, 9}, {1, 6, 7, 8}}, 7));
+        pln(getFirstAppearance(intArr2, 5));
+        pln(getFirstAppearance(intArr, 3));
+        pln(getFirstAppearance(new int[][] {{2, 4, 5, 9}, {1, 6, 7, 8}}, 7));
+        pln();
 
         pln("4: getDiagonal");
-        p("| [[1, 2], [3, 4]] -> [1, 4] | result: ");pln(getDiagonal(intArr2));
-        p("| [[3, 2, 1], [4, 5, 6]] -> [3, 5] | result: ");pln(getDiagonal(intArr));
-        p("| [[2, 4, 5, 9], [1, 6, 7, 8], [1, 6, 7, 8]] -> [2, 6, 7] | result: ");pln(getDiagonal(new int[][] {{2, 4, 5, 9}, {1, 6, 7, 8}, {1, 6, 7, 8}}));
+        pln(getDiagonal(intArr2));
+        pln(getDiagonal(intArr));
+        pln(getDiagonal(new int[][] {{2, 4, 5, 9}, {1, 6, 7, 8}, {1, 6, 7, 8}}));
+        pln();
 
         pln("5: getColumnString");
-        p("| [[Hello, world, !], [It's, me, Margaret]] -> world me | result: ");pln(getColumnString(stringArr, 1));
-        p("| [[Hello, world, !], [It's, me, Genevieve]] -> ! Genevieve | result: ");pln(getColumnString(stringArr4, 2));
-        p("| [[hello, no], [everybody, ur], [my, not], [name, stop], [is, capping], [markiplier, already]] -> hello everybody my name is markiplier | result: ");pln(getColumnString(new String[][] {{"hello", "no"}, {"everybody", "ur"}, {"my", "not"}, {"name", "stop"}, {"is", "capping"}, {"markiplier", "already"}}, 0));
+        pln(getColumnString(stringArr, 1));
+        pln(getColumnString(stringArr4, 2));
+        pln(getColumnString(new String[][] {{"hello", "no"}, {"everybody", "ur"}, {"my", "not"}, {"name", "stop"}, {"is", "capping"}, {"markiplier", "already"}}, 0));
+        pln();
+
+        pln("6: max");
+        pln(max(intArr));
+        pln(max(intArr2));
+        pln(max(new int[][] {{2, 5, 6, 8}, {5, 6, 7, 8}, {2, 5, 7, 9}, {6, 7, 8, 9}}));
+        pln();
+
+        pln("7: min");
+        pln(min(intArr));
+        pln(min(intArr2));
+        pln(min(new int[][] {{2, 5, 6, 8}, {5, 6, 7, 8}, {2, 5, 7, 9}, {6, 7, 8, 9}}));
+        pln();
+
+        pln("8: longest");
+        pln(longest(stringArr));
+        pln(longest(stringArr2));
+        pln(longest(stringArr3));
+        pln();
+
+        pln("9: shortest");
+        pln(shortest(stringArr));
+        pln(shortest(stringArr2));
+        pln(shortest(stringArr3));
+        pln();
+
+        pln("10: largestCorrespondingAbsoluteDifference");
+        pln(largestCorrespondingAbsoluteDifference(new int[][] {{1, 2}, {3, 4}}, new int[][] {{-1, -2}, {-3, -4}}));
+        pln(largestCorrespondingAbsoluteDifference(new int[][] {{1, 2}, {3, 4}}, new int[][] {{0, 0}, {-3, 0}}));
+        pln(largestCorrespondingAbsoluteDifference(new int[][] {{1, 2, 5, 6, 9, 10}, {3, 4, 7, 8, 11, 12}, {7, 5, 6, 7, 2, 5}}, new int[][] {{12, 11, 10, 9, 8, 7}, {6, 5, 4, 3, 2, 1}, {0, -1, -2, -3, -4, -5}}));
+        pln();
+
+        pln("11: mean");
+        pln(mean(new double[][] {{1.0, 1.1, 1.2, 1.3, 1.4}, {2.1, 2.2, 2.3, 2.4, 2.5}}));
+        pln(mean(new double[][] {{0.0, 0.0, 0.0, 0.0}, {1.0, 1.2, 1.3, 1.4}}));
+        pln(mean(new double[][] {{1.0}, {3.0}}));
+        pln();
+
+        pln("12: containsEqValues");
+        pln(containsEqValues(intArr));
+        pln(containsEqValues(intArr2));
+        pln(containsEqValues(new int[][] {{1, 2}, {3, 4}}));
+        pln();
+
+        pln("13: lastStr");
+        pln(lastStr(stringArr));
+        pln(lastStr(stringArr2));
+        pln(lastStr(stringArr3));
+        pln();
     }
 }
